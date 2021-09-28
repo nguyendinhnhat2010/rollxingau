@@ -21,18 +21,22 @@ class _MyAppState extends State<MyApp> {
     'assets/images/dice4.png',
     'assets/images/dice5.png',
     'assets/images/dice6.png',];
-    var randomimage = "";
-    var image = Random();
-    for(int i = 1; i < 3; i++)
-    {
-      randomimage =  listDice[image.nextInt(listDice.length)];
-    }
-    return randomimage;
+    var randomimage1 = "";
+    var image1 = Random();
+    randomimage1 = listDice[image1.nextInt(listDice.length)];
+    return randomimage1;
+    var randomimage2 = "";
+    var image2 = Random();
+    randomimage2 = listDice[image2.nextInt(listDice.length)];
+    return randomimage2;
+
   }
-    var randomDice = "";
+    var randomDice1 = "assets/images/dice1.png";
+    var randomDice2 = "assets/images/dice1.png";
   randomGetImage(){
     setState(() {
-      randomDice = randomImages().toString();
+      randomDice1 = randomImages().toString();
+      randomDice2 = randomImages().toString();
     });
   }
 
@@ -55,13 +59,23 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children:<Widget> [
-              Image.asset(randomDice, width: 100, height: 100,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Padding(padding: EdgeInsets.only(left: 10, right: 10),
+                  child: Image.asset(randomDice1, width: 100, height: 100,),
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 10, right: 10),
+                  child: Image.asset(randomDice2, width: 100, height: 100,),
+                  ),
+                ],
+              ),
               Container(
                 width: 100,
                 margin: const EdgeInsets.only(top: 10),
                 child: ElevatedButton(
                   onPressed: randomGetImage, 
-                  child: Text('Roll', style: TextStyle(color: Colors.white),),
+                  child: const Text('Roll', style: TextStyle(color: Colors.white),),
                   style: ButtonStyle(
                     backgroundColor: MaterialStateProperty.all<Color>(Colors.red),
                   ),
